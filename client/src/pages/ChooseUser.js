@@ -8,7 +8,7 @@ import {
   CircularProgress,
   Backdrop,
 } from '@mui/material';
-import { AccountCircle, School} from '@mui/icons-material';
+import { AccountCircle, School, Group} from '@mui/icons-material';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../redux/userRelated/userHandle';
@@ -48,6 +48,17 @@ const ChooseUser = ({ visitor }) => {
       }
       else {
         navigate('/Studentlogin');
+      }
+    }
+    else if (user === "Teacher") {
+      if (visitor === "guest") {
+        const email = "tony@12"
+        const fields = { email, password }
+        setLoader(true)
+        dispatch(loginUser(fields, user))
+      }
+      else {
+        navigate('/Teacherlogin');
       }
     }
   }
@@ -93,7 +104,19 @@ const ChooseUser = ({ visitor }) => {
                   <School fontSize="large" />
                 </Box>
                 <StyledTypography>
-                  User
+                  Student
+                </StyledTypography>
+              </div>
+            </StyledPaper>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <StyledPaper elevation={3}>
+              <div onClick={() => navigateHandler("Teacher")}>
+                <Box mb={2}>
+                  <Group fontSize="large" />
+                </Box>
+                <StyledTypography>
+                  Teacher
                 </StyledTypography>
               </div>
             </StyledPaper>

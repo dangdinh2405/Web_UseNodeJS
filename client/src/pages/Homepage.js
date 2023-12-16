@@ -19,23 +19,12 @@ const Homepage = () => {
                             <br />
                             Management Project
                         </StyledTitle>
-                        {/* <StyledText>
-                            Streamline school management, class organization, and add students and faculty.
-                            Seamlessly track attendance, assess performance, and provide feedback.
-                            Access records, view marks, and communicate effortlessly.
-                        </StyledText> */}
                         <StyledBox>
                             <StyledLink to="/choose">
                                 <LightBlueButton variant="contained" fullWidth >
                                     Login
                                 </LightBlueButton>
                             </StyledLink>
-                            <StyledText>
-                                Don't have an account?{' '}
-                                <Link to="/Adminregister" style={{color:"#0091e4"}}>
-                                    Sign up
-                                </Link>
-                            </StyledText>
                         </StyledBox>
                     </StyledPaper>
                 </Grid>
@@ -73,14 +62,6 @@ const StyledTitle = styled.h1`
   /* font-family: "Manrope"; */
   font-weight: bold;
   padding-top: 0;
-  letter-spacing: normal;
-  line-height: normal;
-`;
-
-const StyledText = styled.p`
-  /* color: #550080; */
-  margin-top: 30px;
-  margin-bottom: 30px; 
   letter-spacing: normal;
   line-height: normal;
 `;

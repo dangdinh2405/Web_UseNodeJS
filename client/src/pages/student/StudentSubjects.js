@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getSubjectList } from '../../redux/sclassRelated/sclassHandle';
 import { BottomNavigation, BottomNavigationAction, Container, Paper, Table, TableBody, TableHead, Typography } from '@mui/material';
 import { getUserDetails } from '../../redux/userRelated/userHandle';
 import CustomBarChart from '../../components/CustomBarChart'
@@ -32,13 +31,7 @@ const StudentSubjects = () => {
             setSubjectMarks(userDetails.examResult || []);
         }
     }, [userDetails])
-
-    useEffect(() => {
-        if (subjectMarks === []) {
-            dispatch(getSubjectList(currentUser.sclassName._id, "ClassSubjects"));
-        }
-    }, [subjectMarks, dispatch, currentUser.sclassName._id]);
-
+    
     const handleSectionChange = (event, newSection) => {
         setSelectedSection(newSection);
     };

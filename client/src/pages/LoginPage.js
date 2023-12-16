@@ -13,12 +13,10 @@ import Popup from '../components/Popup';
 const defaultTheme = createTheme();
 
 const LoginPage = ({ role }) => {
-
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const { status, currentUser, response, error, currentRole } = useSelector(state => state.user);;
-
     const [toggle, setToggle] = useState(false)
     const [guestLoader, setGuestLoader] = useState(false)
     const [loader, setLoader] = useState(false)
@@ -208,18 +206,6 @@ const LoginPage = ({ role }) => {
                             <Button
                             >
                             </Button>
-                            {role === "Admin" &&
-                                <Grid container>
-                                    <Grid>
-                                        Don't have an account?
-                                    </Grid>
-                                    <Grid item sx={{ ml: 2 }}>
-                                        <StyledLink to="/Adminregister">
-                                            Sign up
-                                        </StyledLink>
-                                    </Grid>
-                                </Grid>
-                            }
                         </Box>
                     </Box>
                 </Grid>
