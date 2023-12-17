@@ -18,11 +18,11 @@ const StudentSideBar = () => {
                     </ListItemIcon>
                     <ListItemText primary="Home" />
                 </ListItemButton>
-                <ListItemButton component={Link} to="/Student/subjects">
+                <ListItemButton component={Link} to="/Student/sections">
                     <ListItemIcon>
-                        <AssignmentIcon color={location.pathname.startsWith("/Student/subjects") ? 'primary' : 'inherit'} />
+                        <AssignmentIcon color={location.pathname.startsWith("/Student/sections") ? 'primary' : 'inherit'} />
                     </ListItemIcon>
-                    <ListItemText primary="Subjects" />
+                    <ListItemText primary="Sections" />
                 </ListItemButton>
             </React.Fragment>
             <Divider sx={{ my: 1 }} />

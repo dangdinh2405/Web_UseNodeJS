@@ -9,8 +9,7 @@ import {
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import { resetSubjects } from "../../../redux/sclassRelated/sclassSlice";
-import { BlueButton, GreenButton, PurpleButton } from "../../../components/buttonStyles";
+import { BlueButton, GreenButton } from "../../../components/buttonStyles";
 import TableTemplate from "../../../components/TableTemplate";
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
@@ -25,13 +24,13 @@ const ClassDetails = () => {
     const dispatch = useDispatch();
     const { subjectsList, sclassStudents, sclassDetails, loading, error, response, getresponse } = useSelector((state) => state.sclass);
 
-    const classID = params.id
+    const topicID = params.id
 
     useEffect(() => {
-        dispatch(getClassDetails(classID, "Sclass"));
-        dispatch(getSubjectList(classID, "ClassSubjects"))
-        dispatch(getClassStudents(classID));
-    }, [dispatch, classID])
+        dispatch(getClassDetails(topicID, "Sclass"));
+        dispatch(getSubjectList(topicID, "ClassSubjects"))
+        dispatch(getClassStudents(topicID));
+    }, [dispatch, topicID])
 
     if (error) {
         console.log(error)
@@ -49,13 +48,13 @@ const ClassDetails = () => {
     const deleteHandler = (deleteID, address) => {
         console.log(deleteID);
         console.log(address);
-        setMessage("Sorry the delete function has been disabled for now.")
+        setMessage("Delete function has been disabled")
         setShowPopup(true)
     }
 
     const subjectColumns = [
-        { id: 'name', label: 'Subject Name', minWidth: 170 },
-        { id: 'code', label: 'Subject Code', minWidth: 100 },
+        { id: 'name', label: 'Section Name', minWidth: 170 },
+        { id: 'code', label: 'Section Code', minWidth: 100 },
     ]
 
     const subjectRows = subjectsList && subjectsList.length > 0 && subjectsList.map((subject) => {
@@ -75,7 +74,7 @@ const ClassDetails = () => {
                 <BlueButton
                     variant="contained"
                     onClick={() => {
-                        navigate(`/Admin/class/subject/${classID}/${row.id}`)
+                        navigate(`/Admin/topic/section/${topicID}/${row.id}`)
                     }}
                 >
                     View
@@ -87,11 +86,11 @@ const ClassDetails = () => {
     const subjectActions = [
         {
             icon: <PostAddIcon color="primary" />, name: 'Add New Subject',
-            action: () => navigate("/Admin/addsubject/" + classID)
+            action: () => navigate("/Admin/addsection/" + topicID)
         },
         {
             icon: <DeleteIcon color="error" />, name: 'Delete All Subjects',
-            action: () => deleteHandler(classID, "SubjectsClass")
+            action: () => deleteHandler(topicID, "SubjectsClass")
         }
     ];
 
@@ -102,15 +101,15 @@ const ClassDetails = () => {
                     <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
                         <GreenButton
                             variant="contained"
-                            onClick={() => navigate("/Admin/addsubject/" + classID)}
+                            onClick={() => navigate("/Admin/addsection/" + topicID)}
                         >
-                            Add Subjects
+                            Add Sections
                         </GreenButton>
                     </Box>
                     :
                     <>
                         <Typography variant="h5" gutterBottom>
-                            Subjects List:
+                        Sections List:
                         </Typography>
 
                         <TableTemplate buttonHaver={SubjectsButtonHaver} columns={subjectColumns} rows={subjectRows} />
@@ -140,20 +139,6 @@ const ClassDetails = () => {
                 <IconButton onClick={() => deleteHandler(row.id, "Student")}>
                     <PersonRemoveIcon color="error" />
                 </IconButton>
-                <BlueButton
-                    variant="contained"
-                    onClick={() => navigate("/Admin/students/student/" + row.id)}
-                >
-                    View
-                </BlueButton>
-                <PurpleButton
-                    variant="contained"
-                    onClick={() =>
-                        navigate("/Admin/students/student/attendance/" + row.id)
-                    }
-                >
-                    Attendance
-                </PurpleButton>
             </>
         );
     };
@@ -161,11 +146,11 @@ const ClassDetails = () => {
     const studentActions = [
         {
             icon: <PersonAddAlt1Icon color="primary" />, name: 'Add New Student',
-            action: () => navigate("/Admin/class/addstudents/" + classID)
+            action: () => navigate("/Admin/topics/addstudents/" + topicID)
         },
         {
             icon: <PersonRemoveIcon color="error" />, name: 'Delete All Students',
-            action: () => deleteHandler(classID, "StudentsClass")
+            action: () => deleteHandler(topicID, "StudentsClass")
         },
     ];
 
@@ -177,7 +162,7 @@ const ClassDetails = () => {
                         <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
                             <GreenButton
                                 variant="contained"
-                                onClick={() => navigate("/Admin/class/addstudents/" + classID)}
+                                onClick={() => navigate("/Admin/topics/addstudents/" + topicID)}
                             >
                                 Add Students
                             </GreenButton>
@@ -197,14 +182,6 @@ const ClassDetails = () => {
         )
     }
 
-    const ClassTeachersSection = () => {
-        return (
-            <>
-                Teachers
-            </>
-        )
-    }
-
     const ClassDetailsSection = () => {
         const numberOfSubjects = subjectsList.length;
         const numberOfStudents = sclassStudents.length;
@@ -212,13 +189,13 @@ const ClassDetails = () => {
         return (
             <>
                 <Typography variant="h4" align="center" gutterBottom>
-                    Class Details
+                    Topic Details
                 </Typography>
                 <Typography variant="h5" gutterBottom>
-                    This is Class {sclassDetails && sclassDetails.sclassName}
+                    This is Topic {sclassDetails && sclassDetails.sclassName}
                 </Typography>
                 <Typography variant="h6" gutterBottom>
-                    Number of Subjects: {numberOfSubjects}
+                    Number of Sections: {numberOfSubjects}
                 </Typography>
                 <Typography variant="h6" gutterBottom>
                     Number of Students: {numberOfStudents}
@@ -226,7 +203,7 @@ const ClassDetails = () => {
                 {getresponse &&
                     <GreenButton
                         variant="contained"
-                        onClick={() => navigate("/Admin/class/addstudents/" + classID)}
+                        onClick={() => navigate("/Admin/topics/addstudents/" + topicID)}
                     >
                         Add Students
                     </GreenButton>
@@ -234,9 +211,9 @@ const ClassDetails = () => {
                 {response &&
                     <GreenButton
                         variant="contained"
-                        onClick={() => navigate("/Admin/addsubject/" + classID)}
+                        onClick={() => navigate("/Admin/addsection/" + topicID)}
                     >
-                        Add Subjects
+                        Add Sections
                     </GreenButton>
                 }
             </>
@@ -254,9 +231,8 @@ const ClassDetails = () => {
                             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                                 <TabList onChange={handleChange} sx={{ position: 'fixed', width: '100%', bgcolor: 'background.paper', zIndex: 1 }}>
                                     <Tab label="Details" value="1" />
-                                    <Tab label="Subjects" value="2" />
+                                    <Tab label="Sections" value="2" />
                                     <Tab label="Students" value="3" />
-                                    <Tab label="Teachers" value="4" />
                                 </TabList>
                             </Box>
                             <Container sx={{ marginTop: "3rem", marginBottom: "4rem" }}>
@@ -268,9 +244,6 @@ const ClassDetails = () => {
                                 </TabPanel>
                                 <TabPanel value="3">
                                     <ClassStudentsSection />
-                                </TabPanel>
-                                <TabPanel value="4">
-                                    <ClassTeachersSection />
                                 </TabPanel>
                             </Container>
                         </TabContext>

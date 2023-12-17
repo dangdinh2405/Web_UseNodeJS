@@ -10,14 +10,11 @@ import {
 } from '@mui/material';
 import { AccountCircle, School, Group} from '@mui/icons-material';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../redux/userRelated/userHandle';
+import { useSelector } from 'react-redux';
 import Popup from '../components/Popup';
 
-const ChooseUser = ({ visitor }) => {
-  const dispatch = useDispatch()
+const ChooseUser = () => {
   const navigate = useNavigate()
-  const password = "zxc"
 
   const { status, currentUser, currentRole } = useSelector(state => state.user);;
 
@@ -27,39 +24,14 @@ const ChooseUser = ({ visitor }) => {
 
   const navigateHandler = (user) => {
     if (user === "Admin") {
-      if (visitor === "guest") {
-        const email = "yogendra@12"
-        const fields = { email, password }
-        setLoader(true)
-        dispatch(loginUser(fields, user))
-      }
-      else {
-        navigate('/Adminlogin');
-      }
+      navigate('/Adminlogin');
     }
 
     else if (user === "Student") {
-      if (visitor === "guest") {
-        const rollNum = "1"
-        const studentName = "Dipesh Awasthi"
-        const fields = { rollNum, studentName, password }
-        setLoader(true)
-        dispatch(loginUser(fields, user))
-      }
-      else {
-        navigate('/Studentlogin');
-      }
+      navigate('/Studentlogin');
     }
     else if (user === "Teacher") {
-      if (visitor === "guest") {
-        const email = "tony@12"
-        const fields = { email, password }
-        setLoader(true)
-        dispatch(loginUser(fields, user))
-      }
-      else {
-        navigate('/Teacherlogin');
-      }
+      navigate('/Teacherlogin');
     }
   }
 
@@ -70,7 +42,8 @@ const ChooseUser = ({ visitor }) => {
       }
       else if (currentRole === 'Student') {
         navigate('/Student/dashboard');
-      } else if (currentRole === 'Teacher') {
+      } 
+      else if (currentRole === 'Teacher') {
         navigate('/Teacher/dashboard');
       }
     }

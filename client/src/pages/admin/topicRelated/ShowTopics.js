@@ -39,7 +39,7 @@ const ShowClasses = () => {
   const deleteHandler = (deleteID, address) => {
     console.log(deleteID);
     console.log(address);
-    setMessage("Sorry the delete function has been disabled for now.")
+    setMessage("Delete function has been disabled")
     setShowPopup(true)
     // dispatch(deleteUser(deleteID, address))
     //   .then(() => {
@@ -60,8 +60,8 @@ const ShowClasses = () => {
 
   const SclassButtonHaver = ({ row }) => {
     const actions = [
-      { icon: <PostAddIcon />, name: 'Add Subjects', action: () => navigate("/Admin/addsubject/" + row.id) },
-      { icon: <PersonAddAlt1Icon />, name: 'Add Student', action: () => navigate("/Admin/class/addstudents/" + row.id) },
+      { icon: <PostAddIcon />, name: 'Add Subjects', action: () => navigate("/Admin/addsection/" + row.id) },
+      { icon: <PersonAddAlt1Icon />, name: 'Add Student', action: () => navigate("/Admin/topics/addstudents/" + row.id) },
     ];
     return (
       <ButtonContainer>
@@ -69,7 +69,7 @@ const ShowClasses = () => {
           <DeleteIcon color="error" />
         </IconButton>
         <BlueButton variant="contained"
-          onClick={() => navigate("/Admin/classes/class/" + row.id)}>
+          onClick={() => navigate("/Admin/topics/topic/" + row.id)}>
           View
         </BlueButton>
         <ActionMenu actions={actions} />
@@ -133,11 +133,11 @@ const ShowClasses = () => {
 
   const actions = [
     {
-      icon: <AddCardIcon color="primary" />, name: 'Add New Class',
-      action: () => navigate("/Admin/addclass")
+      icon: <AddCardIcon color="primary" />, name: 'Add New Topic',
+      action: () => navigate("/Admin/addtopic")
     },
     {
-      icon: <DeleteIcon color="error" />, name: 'Delete All Classes',
+      icon: <DeleteIcon color="error" />, name: 'Delete All Topics',
       action: () => deleteHandler(adminID, "Sclasses")
     },
   ];
@@ -150,8 +150,8 @@ const ShowClasses = () => {
         <>
           {getresponse ?
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-              <GreenButton variant="contained" onClick={() => navigate("/Admin/addclass")}>
-                Add Class
+              <GreenButton variant="contained" onClick={() => navigate("/Admin/addtopic")}>
+                Add Topic
               </GreenButton>
             </Box>
             :

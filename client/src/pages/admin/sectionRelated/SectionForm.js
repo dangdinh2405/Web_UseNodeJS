@@ -70,7 +70,7 @@ const SubjectForm = () => {
 
     useEffect(() => {
         if (status === 'added') {
-            navigate("/Admin/subjects");
+            navigate("/Admin/sections");
             dispatch(underControl())
             setLoader(false)
         }
@@ -89,7 +89,7 @@ const SubjectForm = () => {
     return (
         <form onSubmit={submitHandler}>
             <Box mb={2}>
-                <Typography variant="h6" >Add Subjects</Typography>
+                <Typography variant="h6" >Add Section</Typography>
             </Box>
             <Grid container spacing={2}>
                 {subjects.map((subject, index) => (
@@ -97,7 +97,7 @@ const SubjectForm = () => {
                         <Grid item xs={6}>
                             <TextField
                                 fullWidth
-                                label="Subject Name"
+                                label="Section Name"
                                 variant="outlined"
                                 value={subject.subName}
                                 onChange={handleSubjectNameChange(index)}
@@ -108,7 +108,7 @@ const SubjectForm = () => {
                         <Grid item xs={4}>
                             <TextField
                                 fullWidth
-                                label="Subject Code"
+                                label="Section Code"
                                 variant="outlined"
                                 value={subject.subCode}
                                 onChange={handleSubjectCodeChange(index)}
@@ -137,7 +137,7 @@ const SubjectForm = () => {
                                         color="primary"
                                         onClick={handleAddSubject}
                                     >
-                                        Add Subject
+                                        Add Section
                                     </Button>
                                 ) : (
                                     <Button

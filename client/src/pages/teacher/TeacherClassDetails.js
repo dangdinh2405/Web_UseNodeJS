@@ -1,19 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom'
 import { getClassStudents } from "../../redux/sclassRelated/sclassHandle";
-import { Paper, Box, Typography} from '@mui/material';
-import { BlueButton} from "../../components/buttonStyles";
+import { Paper, Box, Typography, IconButton} from '@mui/material';
 import TableTemplate from "../../components/TableTemplate";
+import Popup from '../../components/Popup';
+import DeleteIcon from "@mui/icons-material/Delete";
+
 
 const TeacherClassDetails = () => {
-    const navigate = useNavigate()
     const dispatch = useDispatch();
     const { sclassStudents, loading, error, getresponse } = useSelector((state) => state.sclass);
 
     const { currentUser } = useSelector((state) => state.user);
     const classID = currentUser.teachSclass?._id
+
+    const [showPopup, setShowPopup] = useState(false);
+    const [message, setMessage] = useState("");
 
     useEffect(() => {
         dispatch(getClassStudents(classID));
@@ -36,18 +39,25 @@ const TeacherClassDetails = () => {
         };
     })
 
+    const deleteHandler = (deleteID, address) => {
+        console.log(deleteID);
+        console.log(address);
+        setMessage("Delete function has been disabled")
+        setShowPopup(true)
+
+        // dispatch(deleteUser(deleteID, address))
+        //     .then(() => {
+        //         dispatch(getSubjectList(currentUser._id, "AllSubjects"));
+        //     })
+    }
+
     const StudentsButtonHaver = ({ row }) => {
 
         return (
             <>
-                <BlueButton
-                    variant="contained"
-                    onClick={() =>
-                        navigate("/Teacher/class/student/" + row.id)
-                    }
-                >
-                    View
-                </BlueButton>
+                <IconButton onClick={() => deleteHandler(row.id, "Subject")}>
+                    <DeleteIcon color="error" />
+                </IconButton>
             </>
         );
     };
@@ -59,7 +69,7 @@ const TeacherClassDetails = () => {
             ) : (
                 <>
                     <Typography variant="h4" align="center" gutterBottom>
-                        Class Details
+                        Topic Details
                     </Typography>
                     {getresponse ? (
                         <>
@@ -80,6 +90,7 @@ const TeacherClassDetails = () => {
                     )}
                 </>
             )}
+            <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
         </>
     );
 };

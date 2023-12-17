@@ -19,7 +19,6 @@ import { AppBar, Drawer } from '../../components/styles';
 import TeacherClassDetails from './TeacherClassDetails';
 import TeacherHomePage from './TeacherHomePage';
 import TeacherProfile from './TeacherProfile';
-import TeacherViewStudent from './TeacherViewStudent';
 
 
 const TeacherDashboard = () => {
@@ -78,8 +77,6 @@ const TeacherDashboard = () => {
                         <Route path="/Teacher/profile" element={<TeacherProfile />} />
 
                         <Route path="/Teacher/class" element={<TeacherClassDetails />} />
-                        <Route path="/Teacher/class/student/:id" element={<TeacherViewStudent />} />
-
                         <Route path="/logout" element={<Logout />} />
                     </Routes>
                 </Box>

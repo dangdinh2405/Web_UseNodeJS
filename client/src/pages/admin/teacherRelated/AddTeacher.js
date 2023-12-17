@@ -12,14 +12,14 @@ const AddTeacher = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const subjectID = params.id
+  const sectionID = params.id
 
   const { status, response, error } = useSelector(state => state.user);
   const { subjectDetails } = useSelector((state) => state.sclass);
 
   useEffect(() => {
-    dispatch(getSubjectDetails(subjectID, "Subject"));
-  }, [dispatch, subjectID]);
+    dispatch(getSubjectDetails(sectionID, "Subject"));
+  }, [dispatch, sectionID]);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

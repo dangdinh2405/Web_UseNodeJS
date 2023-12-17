@@ -12,7 +12,7 @@ const ChooseSubject = ({ situation }) => {
     const navigate = useNavigate()
     const dispatch = useDispatch();
 
-    const [classID, setClassID] = useState("");
+    const [topicID, settopicID] = useState("");
     const [teacherID, setTeacherID] = useState("");
     const [loader, setLoader] = useState(false)
 
@@ -20,17 +20,17 @@ const ChooseSubject = ({ situation }) => {
 
     useEffect(() => {
         if (situation === "Norm") {
-            setClassID(params.id);
-            const classID = params.id
-            dispatch(getTeacherFreeClassSubjects(classID));
+            settopicID(params.id);
+            const topicID = params.id
+            dispatch(getTeacherFreeClassSubjects(topicID));
         }
         else if (situation === "Teacher") {
-            const { classID, teacherID } = params
-            setClassID(classID);
+            const { topicID, teacherID } = params
+            settopicID(topicID);
             setTeacherID(teacherID);
-            dispatch(getTeacherFreeClassSubjects(classID));
+            dispatch(getTeacherFreeClassSubjects(topicID));
         }
-    }, [situation]);
+    }, [situation, dispatch, params]);
 
     if (loading) {
         return <div>Loading...</div>;
@@ -39,7 +39,7 @@ const ChooseSubject = ({ situation }) => {
             <h1>Sorry all subjects have teachers assigned already</h1>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
                 <PurpleButton variant="contained"
-                    onClick={() => navigate("/Admin/addsubject/" + classID)}>
+                    onClick={() => navigate("/Admin/addsection/" + topicID)}>
                     Add Subjects
                 </PurpleButton>
             </Box>

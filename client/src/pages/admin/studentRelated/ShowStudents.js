@@ -7,7 +7,7 @@ import {
     Paper, Box, IconButton
 } from '@mui/material';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
-import {BlueButton, GreenButton } from '../../../components/buttonStyles';
+import {GreenButton } from '../../../components/buttonStyles';
 import TableTemplate from '../../../components/TableTemplate';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import SpeedDialTemplate from '../../../components/SpeedDialTemplate';
@@ -36,7 +36,7 @@ const ShowStudents = () => {
     const deleteHandler = (deleteID, address) => {
         console.log(deleteID);
         console.log(address);
-        setMessage("Sorry the delete function has been disabled for now.")
+        setMessage("Delete function has been disabled")
         setShowPopup(true)
 
         // dispatch(deleteUser(deleteID, address))
@@ -66,11 +66,6 @@ const ShowStudents = () => {
                 <IconButton onClick={() => deleteHandler(row.id, "Student")}>
                     <PersonRemoveIcon color="error" />
                 </IconButton>
-                <BlueButton variant="contained"
-                    onClick={() => navigate("/Admin/students/student/" + row.id)}>
-                    View
-                </BlueButton>
-
             </>
         );
     };

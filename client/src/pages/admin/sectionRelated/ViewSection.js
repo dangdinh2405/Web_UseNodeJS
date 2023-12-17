@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { getClassStudents, getSubjectDetails } from '../../../redux/sclassRelated/sclassHandle';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, Tab, Container, Typography, BottomNavigation, BottomNavigationAction, Paper } from '@mui/material';
-import { BlueButton, GreenButton, PurpleButton } from '../../../components/buttonStyles';
+import { Box, Tab, Container, Typography, BottomNavigation, BottomNavigationAction, Paper, IconButton } from '@mui/material';
+import { GreenButton } from '../../../components/buttonStyles';
 import TableTemplate from '../../../components/TableTemplate';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-
 import InsertChartIcon from '@mui/icons-material/InsertChart';
 import InsertChartOutlinedIcon from '@mui/icons-material/InsertChartOutlined';
+import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
+import Popup from '../../../components/Popup';
 
 const ViewSubject = () => {
   const navigate = useNavigate()
@@ -18,12 +19,15 @@ const ViewSubject = () => {
   const dispatch = useDispatch();
   const { subloading, subjectDetails, sclassStudents, getresponse, error } = useSelector((state) => state.sclass);
 
-  const { classID, subjectID } = params
+  const { topicID, sectionID } = params
+
+  const [showPopup, setShowPopup] = React.useState(false);
+  const [message, setMessage] = React.useState("");
 
   useEffect(() => {
-    dispatch(getSubjectDetails(subjectID, "Subject"));
-    dispatch(getClassStudents(classID));
-  }, [dispatch, subjectID, classID]);
+    dispatch(getSubjectDetails(sectionID, "Subject"));
+    dispatch(getClassStudents(topicID));
+  }, [dispatch, sectionID, topicID]);
 
   if (error) {
     console.log(error)
@@ -53,35 +57,28 @@ const ViewSubject = () => {
     };
   })
 
+  const deleteHandler = (deleteID, address) => {
+    console.log(deleteID);
+    console.log(address);
+    setMessage("Sorry the delete function has been disabled for now.")
+    setShowPopup(true)
+
+    // dispatch(deleteUser(deleteID, address))
+    //     .then(() => {
+    //         dispatch(getAllStudents(currentUser._id));
+    //     })
+  }
+
   const StudentsAttendanceButtonHaver = ({ row }) => {
     return (
       <>
-        <BlueButton
-          variant="contained"
-          onClick={() => navigate("/Admin/students/student/" + row.id)}
-        >
-          View
-        </BlueButton>
+        <IconButton onClick={() => deleteHandler(row.id, "Student")}>
+          <PersonRemoveIcon color="error" />
+        </IconButton>
       </>
     );
   };
 
-  const StudentsMarksButtonHaver = ({ row }) => {
-    return (
-      <>
-        <BlueButton
-          variant="contained"
-          onClick={() => navigate("/Admin/students/student/" + row.id)}
-        >
-          View
-        </BlueButton>
-        <PurpleButton variant="contained"
-          onClick={() => navigate(`/Admin/subject/student/marks/${row.id}/${subjectID}`)}>
-          Provide Marks
-        </PurpleButton>
-      </>
-    );
-  };
 
   const SubjectStudentsSection = () => {
     return (
@@ -91,7 +88,7 @@ const ViewSubject = () => {
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
               <GreenButton
                 variant="contained"
-                onClick={() => navigate("/Admin/class/addstudents/" + classID)}
+                onClick={() => navigate("/Admin/topics/addstudents/" + topicID)}
               >
                 Add Students
               </GreenButton>
@@ -105,9 +102,6 @@ const ViewSubject = () => {
 
             {selectedSection === 'attendance' &&
               <TableTemplate buttonHaver={StudentsAttendanceButtonHaver} columns={studentColumns} rows={studentRows} />
-            }
-            {selectedSection === 'marks' &&
-              <TableTemplate buttonHaver={StudentsMarksButtonHaver} columns={studentColumns} rows={studentRows} />
             }
 
             <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
@@ -156,7 +150,7 @@ const ViewSubject = () => {
           :
           <GreenButton variant="contained"
             onClick={() => navigate("/Admin/teachers/addteacher/" + subjectDetails._id)}>
-            Add Subject Teacher
+            Add Section Teacher
           </GreenButton>
         }
       </>
@@ -189,6 +183,7 @@ const ViewSubject = () => {
           </Box>
         </>
       }
+      <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
     </>
   )
 }

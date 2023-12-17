@@ -35,7 +35,7 @@ const ShowTeachers = () => {
     } else if (response) {
         return (
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                <GreenButton variant="contained" onClick={() => navigate("/Admin/teachers/chooseclass")}>
+                <GreenButton variant="contained" onClick={() => navigate("/Admin/teachers/choosetopic")}>
                     Add Teacher
                 </GreenButton>
             </Box>
@@ -47,7 +47,7 @@ const ShowTeachers = () => {
     const deleteHandler = (deleteID, address) => {
         console.log(deleteID);
         console.log(address);
-        setMessage("Sorry the delete function has been disabled for now.")
+        setMessage("Delete function has been disabled")
         setShowPopup(true)
 
         // dispatch(deleteUser(deleteID, address)).then(() => {
@@ -74,7 +74,7 @@ const ShowTeachers = () => {
     const actions = [
         {
             icon: <PersonAddAlt1Icon color="primary" />, name: 'Add New Teacher',
-            action: () => navigate("/Admin/teachers/chooseclass")
+            action: () => navigate("/Admin/teachers/choosetopic")
         },
         {
             icon: <PersonRemoveIcon color="error" />, name: 'Delete All Teachers',
@@ -118,7 +118,7 @@ const ShowTeachers = () => {
                                                         ) : (
                                                             <Button variant="contained"
                                                                 onClick={() => {
-                                                                    navigate(`/Admin/teachers/choosesubject/${row.teachSclassID}/${row.id}`)
+                                                                    navigate(`/Admin/teachers/choosesection/${row.teachSclassID}/${row.id}`)
                                                                 }}>
                                                                 Add Subject
                                                             </Button>

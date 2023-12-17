@@ -21,12 +21,12 @@ const ChooseClass = ({ situation }) => {
         console.log(error)
     }
 
-    const navigateHandler = (classID) => {
+    const navigateHandler = (topicID) => {
         if (situation === "Teacher") {
-            navigate("/Admin/teachers/choosesubject/" + classID)
+            navigate("/Admin/teachers/choosesection/" + topicID)
         }
         else if (situation === "Subject") {
-            navigate("/Admin/addsubject/" + classID)
+            navigate("/Admin/addsection/" + topicID)
         }
     }
 
@@ -60,7 +60,7 @@ const ChooseClass = ({ situation }) => {
                 <>
                     {getresponse ?
                         <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                            <Button variant="contained" onClick={() => navigate("/Admin/addclass")}>
+                            <Button variant="contained" onClick={() => navigate("/Admin/addtopic")}>
                                 Add Class
                             </Button>
                         </Box>

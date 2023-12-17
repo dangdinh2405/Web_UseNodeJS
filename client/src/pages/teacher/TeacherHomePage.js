@@ -41,7 +41,7 @@ const TeacherHomePage = () => {
                         <StyledPaper>
                             <img src={Lessons} alt="Lessons" />
                             <Title>
-                                Total Lessons
+                                Total Sections
                             </Title>
                             <Data start={0} end={numberOfSessions} duration={5} />
                         </StyledPaper>

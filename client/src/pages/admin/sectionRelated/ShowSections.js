@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { getSubjectList } from '../../../redux/sclassRelated/sclassHandle';
@@ -11,7 +11,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import TableTemplate from '../../../components/TableTemplate';
 import { BlueButton, GreenButton } from '../../../components/buttonStyles';
 import SpeedDialTemplate from '../../../components/SpeedDialTemplate';
-
+import Popup from '../../../components/Popup';
 
 const ShowSubjects = () => {
     const navigate = useNavigate()
@@ -27,18 +27,23 @@ const ShowSubjects = () => {
         console.log(error);
     }
 
+    const [showPopup, setShowPopup] = useState(false);
+    const [message, setMessage] = useState("");
+
     const deleteHandler = (deleteID, address) => {
         console.log(deleteID);
         console.log(address);
+        setMessage("Delete function has been disabled")
+        setShowPopup(true)
 
-        dispatch(deleteUser(deleteID, address))
-            .then(() => {
-                dispatch(getSubjectList(currentUser._id, "AllSubjects"));
-            })
+        // dispatch(deleteUser(deleteID, address))
+        //     .then(() => {
+        //         dispatch(getSubjectList(currentUser._id, "AllSubjects"));
+        //     })
     }
 
     const subjectColumns = [
-        { id: 'subName', label: 'Sub Name', minWidth: 170 },
+        { id: 'subName', label: 'Sec Name', minWidth: 170 },
         { id: 'sessions', label: 'Sessions', minWidth: 170 },
         { id: 'sclassName', label: 'Topic', minWidth: 170 },
     ]
@@ -60,7 +65,7 @@ const ShowSubjects = () => {
                     <DeleteIcon color="error" />
                 </IconButton>
                 <BlueButton variant="contained"
-                    onClick={() => navigate(`/Admin/subjects/subject/${row.sclassID}/${row.id}`)}>
+                    onClick={() => navigate(`/Admin/sections/section/${row.sclassID}/${row.id}`)}>
                     View
                 </BlueButton>
             </>
@@ -69,11 +74,11 @@ const ShowSubjects = () => {
 
     const actions = [
         {
-            icon: <PostAddIcon color="primary" />, name: 'Add New Subject',
-            action: () => navigate("/Admin/subjects/chooseclass")
+            icon: <PostAddIcon color="primary" />, name: 'Add New Section',
+            action: () => navigate("/Admin/sections/choosetopic")
         },
         {
-            icon: <DeleteIcon color="error" />, name: 'Delete All Subjects',
+            icon: <DeleteIcon color="error" />, name: 'Delete All Sections',
             action: () => deleteHandler(currentUser._id, "Subjects")
         }
     ];
@@ -87,8 +92,8 @@ const ShowSubjects = () => {
                     {response ?
                         <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
                             <GreenButton variant="contained"
-                                onClick={() => navigate("/Admin/subjects/chooseclass")}>
-                                Add Subjects
+                                onClick={() => navigate("/Admin/sections/choosetopic")}>
+                                Add Section
                             </GreenButton>
                         </Box>
                         :
@@ -101,6 +106,8 @@ const ShowSubjects = () => {
                     }
                 </>
             }
+            <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
+
         </>
     );
 };

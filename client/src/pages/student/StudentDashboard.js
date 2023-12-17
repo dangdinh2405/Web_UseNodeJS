@@ -14,7 +14,7 @@ import StudentSideBar from './StudentSideBar';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import StudentHomePage from './StudentHomePage';
 import StudentProfile from './StudentProfile';
-import StudentSubjects from './StudentSubjects';
+import StudentSubjects from './StudentSections';
 import Logout from '../Logout'
 import AccountMenu from '../../components/AccountMenu';
 import { AppBar, Drawer } from '../../components/styles';
@@ -74,7 +74,7 @@ const StudentDashboard = () => {
                         <Route path="/Student/dashboard" element={<StudentHomePage />} />
                         <Route path="/Student/profile" element={<StudentProfile />} />
 
-                        <Route path="/Student/subjects" element={<StudentSubjects />} />
+                        <Route path="/Student/sections" element={<StudentSubjects />} />
 
                         <Route path="/logout" element={<Logout />} />
                     </Routes>

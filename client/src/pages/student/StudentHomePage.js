@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react'
-import { Container, Grid, Paper, Typography } from '@mui/material'
+import { Container, Grid, Paper } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserDetails } from '../../redux/userRelated/userHandle';
 import styled from 'styled-components';
 import CountUp from 'react-countup';
 import Subject from "../../assets/subjects.svg";
-import Assignment from "../../assets/assignment.svg";
 import { getSubjectList } from '../../redux/sclassRelated/sclassHandle';
 
 const StudentHomePage = () => {
     const dispatch = useDispatch();
 
-    const { userDetails, currentUser, loading, response } = useSelector((state) => state.user);
+    const { userDetails, currentUser } = useSelector((state) => state.user);
     const { subjectsList } = useSelector((state) => state.sclass);
 
     const classID = currentUser.sclassName._id
@@ -41,52 +40,11 @@ const StudentHomePage = () => {
                             <Data start={0} end={numberOfSubjects} duration={2.5} />
                         </StyledPaper>
                     </Grid>
-                    <Grid item xs={12} md={3} lg={3}>
-                        <StyledPaper>
-                            <img src={Assignment} alt="Assignments" />
-                            <Title>
-                                Total Assignments
-                            </Title>
-                            <Data start={0} end={15} duration={4} />
-                        </StyledPaper>
-                    </Grid>
-                    <Grid item xs={12} md={4} lg={3}>
-                        <ChartContainer>
-                            {
-                                response ?
-                                    <Typography variant="h6">No Attendance Found</Typography>
-                                    :
-                                    <>
-                                        {loading
-                                            ? (
-                                                <Typography variant="h6">Loading...</Typography>
-                                            )
-                                            :
-                                            <>
-                                                {
-                                                }
-                                            </>
-                                        }
-                                    </>
-                            }
-                        </ChartContainer>
-                    </Grid>
                 </Grid>
             </Container>
         </>
     )
 }
-
-const ChartContainer = styled.div`
-  padding: 2px;
-  display: flex;
-  flex-direction: column;
-  height: 240px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-`;
-
 const StyledPaper = styled(Paper)`
   padding: 16px;
   display: flex;

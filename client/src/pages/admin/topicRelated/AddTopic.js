@@ -38,7 +38,7 @@ const AddClass = () => {
 
     useEffect(() => {
         if (status === 'added' && tempDetails) {
-            navigate("/Admin/classes/class/" + tempDetails._id)
+            navigate("/Admin/topics/topic/" + tempDetails._id)
             dispatch(underControl())
             setLoader(false)
         }
@@ -70,7 +70,7 @@ const AddClass = () => {
                     <form onSubmit={submitHandler}>
                         <Stack spacing={3}>
                             <TextField
-                                label="Create a class"
+                                label="Create a topic"
                                 variant="outlined"
                                 value={sclassName}
                                 onChange={(event) => {
