@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const Student = require('../models/studentSchema.js');
-const Subject = require('../models/subjectSchema.js');
+//const Subject = require('../models/subjectSchema.js');
 
 const studentRegister = async (req, res) => {
     try {
