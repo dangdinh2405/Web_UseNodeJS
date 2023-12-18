@@ -16,7 +16,7 @@ const sclassCreate = async (req, res) => {
         });
 
         if (existingSclassByName) {
-            res.send({ message: 'Sorry this class name already exists' });
+            res.send({ message: 'Sorry this topic name already exists' });
         }
         else {
             const result = await sclass.save();
@@ -33,7 +33,7 @@ const sclassList = async (req, res) => {
         if (sclasses.length > 0) {
             res.send(sclasses)
         } else {
-            res.send({ message: "No sclasses found" });
+            res.send({ message: "No stopics found" });
         }
     } catch (err) {
         res.status(500).json(err);
@@ -48,7 +48,7 @@ const getSclassDetail = async (req, res) => {
             res.send(sclass);
         }
         else {
-            res.send({ message: "No class found" });
+            res.send({ message: "No topic found" });
         }
     } catch (err) {
         res.status(500).json(err);
