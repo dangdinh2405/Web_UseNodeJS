@@ -77,13 +77,13 @@ const StudentSubjects = () => {
                 <Typography variant="h4" align="center" gutterBottom>
                     Topic Details
                 </Typography>
-                <Typography variant="h5" gutterBottom>
+                <Typography variant="h6" gutterBottom>
                     You are currently in Topic: {sclassDetails && sclassDetails.sclassName}
                 </Typography>
                 <Typography variant="h6" gutterBottom>
                     Sections:
                 </Typography>
-                {subjectsList &&
+                {subjectsList &&    
                     subjectsList.map((subject, index) => (
                         <div key={index}>
                             <Typography variant="subtitle1">
