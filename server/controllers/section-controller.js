@@ -1,4 +1,4 @@
-const Subject = require('../models/subjectSchema.js');
+const Subject = require('../models/sectionSchema.js');
 const Teacher = require('../models/teacherSchema.js');
 const Student = require('../models/studentSchema.js');
 
