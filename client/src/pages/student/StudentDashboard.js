@@ -11,6 +11,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import StudentHomePage from './StudentHomePage';
 import StudentProfile from './StudentProfile';
 import StudentSubjects from './StudentSections';
+import StudentGroup from './StudentGroup';
 import Logout from '../Logout'
 import AccountMenu from '../../components/AccountMenu';
 import { AppBar, Drawer } from '../../components/styles';
@@ -50,7 +51,7 @@ const StudentDashboard = () => {
                         <Route path="/Student/profile" element={<StudentProfile />} />
 
                         <Route path="/Student/sections" element={<StudentSubjects />} />
-
+                        <Route path="/Student/group" element={<StudentGroup />} />
                         <Route path="/logout" element={<Logout />} />
                     </Routes>
                 </Box>

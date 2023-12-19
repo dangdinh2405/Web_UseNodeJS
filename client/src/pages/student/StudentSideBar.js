@@ -23,6 +23,12 @@ const StudentSideBar = () => {
                     </ListItemIcon>
                     <ListItemText primary="Sections" />
                 </ListItem>
+                <ListItem component={Link} to="/Student/group">
+                    <ListItemIcon>
+                        <GroupIcon color={location.pathname.startsWith("/Student/group") ? 'primary' : 'inherit'} />
+                    </ListItemIcon>
+                    <ListItemText primary="Group" />
+                </ListItem>
                 </List>
         </>
     )
