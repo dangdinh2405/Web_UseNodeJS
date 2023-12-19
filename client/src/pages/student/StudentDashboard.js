@@ -5,11 +5,7 @@ import {
     Toolbar,
     List,
     Typography,
-    Divider,
-    IconButton,
 } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import StudentSideBar from './StudentSideBar';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import StudentHomePage from './StudentHomePage';
@@ -28,21 +24,9 @@ const StudentDashboard = () => {
     return (
         <>
             <Box sx={{ display: 'flex' }}>
-                <CssBaseline />
-                <AppBar open={open} position='absolute'>
+            <CssBaseline />
+                <AppBar sx={{ backgroundColor: '#8AD3B8' }}>
                     <Toolbar sx={{ pr: '24px' }}>
-                        <IconButton
-                            edge="start"
-                            color="inherit"
-                            aria-label="open drawer"
-                            onClick={toggleDrawer}
-                            sx={{
-                                marginRight: '36px',
-                                ...(open && { display: 'none' }),
-                            }}
-                        >
-                            <MenuIcon />
-                        </IconButton>
                         <Typography
                             component="h1"
                             variant="h6"
@@ -50,22 +34,13 @@ const StudentDashboard = () => {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            Student Dashboard
+                            <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                                <StudentSideBar />
+                            </Box>
                         </Typography>
                         <AccountMenu />
                     </Toolbar>
                 </AppBar>
-                <Drawer variant="permanent" open={open} sx={open ? styles.drawerStyled : styles.hideDrawer}>
-                    <Toolbar sx={styles.toolBarStyled}>
-                        <IconButton onClick={toggleDrawer}>
-                            <ChevronLeftIcon />
-                        </IconButton>
-                    </Toolbar>
-                    <Divider />
-                    <List component="nav">
-                        <StudentSideBar />
-                    </List>
-                </Drawer>
                 <Box component="main" sx={styles.boxStyled}>
                     <Toolbar />
                     <Routes>

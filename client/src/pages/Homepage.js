@@ -9,8 +9,7 @@ const Homepage = () => {
     return (
         <StyledContainer>
             <Grid container spacing={0}>
-                <Grid item xs={12} md={12}>
-                <StyledPaper elevation={3}>
+                <StyledPaper>
                         <StyledTitle>
                             Welcome to Management Project
                         </StyledTitle>
@@ -22,7 +21,6 @@ const Homepage = () => {
                             </StyledLink>
                         </StyledBox>
                     </StyledPaper>
-                </Grid>
                 </Grid>
         </StyledContainer>
     );
@@ -41,7 +39,6 @@ const StyledPaper = styled.div`
   background-image: url(${Students});
   background-size: cover;
   background-position: center;
-  padding: 24px;
   height: 100vh;
 `;
 
