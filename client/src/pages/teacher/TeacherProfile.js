@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import { Card, CardContent, Typography } from '@mui/material';
+import { Typography, Grid, Box, Avatar, Container, Paper } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 const TeacherProfile = () => {
@@ -12,36 +12,70 @@ const TeacherProfile = () => {
   const teachSclass = currentUser.teachSclass
   const teachSubject = currentUser.teachSubject
   const teachSchool = currentUser.school
-
   return (
     <>
-      <ProfileCard>
-        <ProfileCardContent>
-          <ProfileText>Name: {currentUser.name}</ProfileText>
-          <ProfileText>Email: {currentUser.email}</ProfileText>
-          <ProfileText>Topic: {teachSclass.sclassName}</ProfileText>
-          <ProfileText>Section: {teachSubject.subName}</ProfileText>
-          <ProfileText>School: {teachSchool.schoolName}</ProfileText>
-        </ProfileCardContent>
-      </ProfileCard>
+      <Container maxWidth="md">
+        <StyledPaper elevation={3}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Box display="flex" justifyContent="center">
+                <Avatar alt="Student Avatar" sx={{ width: 150, height: 150 }}>
+                  {String(currentUser.name).charAt(0)}
+                </Avatar>
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box display="flex" justifyContent="center">
+                <Typography variant="h5" component="h2" textAlign="center">
+                  {currentUser.name}
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box display="flex" justifyContent="center">
+                <Typography variant="subtitle1" component="p" textAlign="center">
+                  Name: {currentUser.name}
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box display="flex" justifyContent="center">
+                <Typography variant="subtitle1" component="p" textAlign="center">
+                  Email: {currentUser.email}
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box display="flex" justifyContent="center">
+                <Typography variant="subtitle1" component="p" textAlign="center">
+                  Topic: {teachSclass.sclassName}
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box display="flex" justifyContent="center">
+                <Typography variant="subtitle1" component="p" textAlign="center">
+                  Section: {teachSubject.subName}
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box display="flex" justifyContent="center">
+                <Typography variant="subtitle1" component="p" textAlign="center">
+                  School: {teachSchool.schoolName}
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
+        </StyledPaper>
+      </Container>
     </>
   )
 }
-
+ 
 export default TeacherProfile
 
-const ProfileCard = styled(Card)`
-  margin: 20px;
-  width: 400px;
-  border-radius: 10px;
-`;
-
-const ProfileCardContent = styled(CardContent)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const ProfileText = styled(Typography)`
-  margin: 10px;
+const StyledPaper = styled(Paper)`
+  padding: 20px;
+  margin-bottom: 20px;
 `;

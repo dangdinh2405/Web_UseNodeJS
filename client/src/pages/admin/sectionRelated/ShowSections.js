@@ -43,7 +43,7 @@ const ShowSubjects = () => {
     }
 
     const subjectColumns = [
-        { id: 'subName', label: 'Sec Name', minWidth: 170 },
+        { id: 'subName', label: 'Section Name', minWidth: 170 },
         { id: 'sessions', label: 'Sessions', minWidth: 170 },
         { id: 'sclassName', label: 'Topic', minWidth: 170 },
     ]

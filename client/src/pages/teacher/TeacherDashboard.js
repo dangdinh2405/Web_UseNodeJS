@@ -31,20 +31,8 @@ const TeacherDashboard = () => {
         <>
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
-                <AppBar open={open} position='absolute'>
+                <AppBar sx={{ backgroundColor: '#8AD3B8' }}>
                     <Toolbar sx={{ pr: '24px' }}>
-                        <IconButton
-                            edge="start"
-                            color="inherit"
-                            aria-label="open drawer"
-                            onClick={toggleDrawer}
-                            sx={{
-                                marginRight: '36px',
-                                ...(open && { display: 'none' }),
-                            }}
-                        >
-                            <MenuIcon />
-                        </IconButton>
                         <Typography
                             component="h1"
                             variant="h6"
@@ -52,22 +40,13 @@ const TeacherDashboard = () => {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            Teacher Dashboard
+                            <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                                <TeacherSideBar />
+                            </Box>
                         </Typography>
                         <AccountMenu />
                     </Toolbar>
                 </AppBar>
-                <Drawer variant="permanent" open={open} sx={open ? styles.drawerStyled : styles.hideDrawer}>
-                    <Toolbar sx={styles.toolBarStyled}>
-                        <IconButton onClick={toggleDrawer}>
-                            <ChevronLeftIcon />
-                        </IconButton>
-                    </Toolbar>
-                    <Divider />
-                    <List component="nav">
-                        <TeacherSideBar />
-                    </List>
-                </Drawer>
                 <Box component="main" sx={styles.boxStyled}>
                     <Toolbar />
                     <Routes>

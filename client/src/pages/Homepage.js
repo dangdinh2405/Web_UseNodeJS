@@ -2,22 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Grid, Box} from '@mui/material';
 import styled from 'styled-components';
-import Students from "../assets/homepageimg.png";
+import Students from "../assets/main.png";
 import { LightBlueButton } from '../components/buttonStyles';
 
 const Homepage = () => {
     return (
         <StyledContainer>
             <Grid container spacing={0}>
-                <Grid item xs={12} md={6}>
-                    <img src={Students} alt="students" style={{ width: '100%' }} />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                    <StyledPaper elevation={3}>
+                <StyledPaper>
                         <StyledTitle>
-                            Welcome to
-                            <br />
-                            Management Project
+                            Welcome to Management Project
                         </StyledTitle>
                         <StyledBox>
                             <StyledLink to="/choose">
@@ -28,7 +22,6 @@ const Homepage = () => {
                         </StyledBox>
                     </StyledPaper>
                 </Grid>
-            </Grid>
         </StyledContainer>
     );
 };
@@ -43,7 +36,9 @@ const StyledContainer = styled(Container)`
 `;
 
 const StyledPaper = styled.div`
-  padding: 24px;
+  background-image: url(${Students});
+  background-size: cover;
+  background-position: center;
   height: 100vh;
 `;
 
@@ -57,11 +52,12 @@ const StyledBox = styled(Box)`
 `;
 
 const StyledTitle = styled.h1`
-  font-size: 3rem;
-  color: #252525;
-  /* font-family: "Manrope"; */
+  font-size: 5rem;
+  color: black;
+  font-family: "Manrope";
   font-weight: bold;
-  padding-top: 0;
+  padding-top: 100px;
+  padding-left: 100px;
   letter-spacing: normal;
   line-height: normal;
 `;

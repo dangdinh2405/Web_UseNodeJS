@@ -2,7 +2,7 @@ import { Container, Grid, Paper } from '@mui/material'
 import CountUp from 'react-countup';
 import styled from 'styled-components';
 import Students from "../../assets/img1.png";
-import Lessons from "../../assets/subjects.svg";
+import Lessons from "../../assets/img4.png";
 import { getClassStudents, getSubjectDetails } from '../../redux/sclassRelated/sclassHandle';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -32,7 +32,7 @@ const TeacherHomePage = () => {
                         <StyledPaper>
                             <img src={Students} alt="Students" />
                             <Title>
-                                Class Students
+                                Topic Students
                             </Title>
                             <Data start={0} end={numberOfStudents} duration={2.5} />
                         </StyledPaper>
