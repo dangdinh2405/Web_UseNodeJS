@@ -5,7 +5,7 @@ import { getUserDetails } from '../../redux/userRelated/userHandle';
 import styled from 'styled-components';
 import CountUp from 'react-countup';
 import Subject from "../../assets/img4.png";
-import { getSubjectList } from '../../redux/sclassRelated/sclassHandle';
+import { getSubjectList } from '../../redux/stopicRelated/stopicHandle';
 
 const StudentHomePage = () => {
     const dispatch = useDispatch();

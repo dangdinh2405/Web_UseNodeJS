@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getClassStudents, getSubjectDetails } from '../../../redux/sclassRelated/sclassHandle';
+import { getClassStudents, getSubjectDetails } from '../../../redux/stopicRelated/stopicHandle';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Tab, Container, Typography, BottomNavigation, BottomNavigationAction, Paper, IconButton } from '@mui/material';

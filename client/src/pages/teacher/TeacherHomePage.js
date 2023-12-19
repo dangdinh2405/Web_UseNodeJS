@@ -3,7 +3,7 @@ import CountUp from 'react-countup';
 import styled from 'styled-components';
 import Students from "../../assets/img1.png";
 import Lessons from "../../assets/img4.png";
-import { getClassStudents, getSubjectDetails } from '../../redux/sclassRelated/sclassHandle';
+import { getClassStudents, getSubjectDetails } from '../../redux/stopicRelated/stopicHandle';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 

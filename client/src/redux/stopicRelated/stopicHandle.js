@@ -10,7 +10,7 @@ import {
     getSubjectsSuccess,
     getSubDetailsSuccess,
     getSubDetailsRequest
-} from './sclassSlice';
+} from './stopicSlice';
 
 export const getAllSclasses = (id, address) => async (dispatch) => {
     dispatch(getRequest());

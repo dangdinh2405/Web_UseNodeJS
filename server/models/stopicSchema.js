@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const sclassSchema = new mongoose.Schema({
+const stopicSchema = new mongoose.Schema({
     sclassName: {
         type: String,
         required: true,
@@ -11,5 +11,5 @@ const sclassSchema = new mongoose.Schema({
     },
 }, { timestamps: true });
 
-module.exports = mongoose.model("sclass", sclassSchema);
+module.exports = mongoose.model("stopic", stopicSchema);
 

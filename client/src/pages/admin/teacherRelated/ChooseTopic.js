@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Button, Typography } from '@mui/material'
-import { getAllSclasses } from '../../../redux/sclassRelated/sclassHandle';
+import { getAllSclasses } from '../../../redux/stopicRelated/stopicHandle';
 import { useNavigate } from 'react-router-dom';
 import { PurpleButton } from '../../../components/buttonStyles';
 import TableTemplate from '../../../components/TableTemplate';

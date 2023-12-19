@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getClassStudents } from "../../redux/sclassRelated/sclassHandle";
+import { getClassStudents } from "../../redux/stopicRelated/stopicHandle";
 import { Paper, Box, Typography, IconButton} from '@mui/material';
 import TableTemplate from "../../components/TableTemplate";
 import Popup from '../../components/Popup';

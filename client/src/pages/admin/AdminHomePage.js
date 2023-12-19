@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import CountUp from 'react-countup';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getAllSclasses } from '../../redux/sclassRelated/sclassHandle';
+import { getAllSclasses } from '../../redux/stopicRelated/stopicHandle';
 import { getAllStudents } from '../../redux/studentRelated/studentHandle';
 import { getAllTeachers } from '../../redux/teacherRelated/teacherHandle';
 

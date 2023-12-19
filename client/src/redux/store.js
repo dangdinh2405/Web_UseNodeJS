@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { userReducer } from './userRelated/userSlice';
 import { studentReducer } from './studentRelated/studentSlice';
-import { sclassReducer } from './sclassRelated/sclassSlice';
+import { sclassReducer } from './stopicRelated/stopicSlice';
 import { teacherReducer } from './teacherRelated/teacherSlice';
 
 const store = configureStore({

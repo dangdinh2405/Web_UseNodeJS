@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const subjectSchema = new mongoose.Schema({
+const sectionSchema = new mongoose.Schema({
     subName: {
         type: String,
         required: true,
@@ -28,4 +28,4 @@ const subjectSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-module.exports = mongoose.model("subject", subjectSchema);
+module.exports = mongoose.model("section", sectionSchema);

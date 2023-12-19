@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Table, TableBody, TableContainer, TableHead, Typography, Paper } from '@mui/material'
 import { useNavigate, useParams } from 'react-router-dom';
-import { getTeacherFreeClassSubjects } from '../../../redux/sclassRelated/sclassHandle';
+import { getTeacherFreeClassSubjects } from '../../../redux/stopicRelated/stopicHandle';
 import { updateTeachSubject } from '../../../redux/teacherRelated/teacherHandle';
 import { GreenButton, PurpleButton } from '../../../components/buttonStyles';
 import { StyledTableCell, StyledTableRow } from '../../../components/styles';
