@@ -225,7 +225,7 @@ const LoginPage = ({ role }) => {
                 />
             </Grid>
             <Backdrop
-                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                sx={{ color: '#ffff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={guestLoader}
             >
                 <CircularProgress color="primary" />
