@@ -50,7 +50,7 @@ router.put("/TeacherSubject", updateTeacherSubject)
 router.post('/TeacherAttendance/:id', teacherAttendance)
 
 
-// Sclass
+// Stopic
 
 router.post('/SclassCreate', sclassCreate);
 
@@ -62,7 +62,7 @@ router.get("/Sclass/Students/:id", getSclassStudents)
 router.delete("/Sclasses/:id", deleteSclasses)
 router.delete("/Sclass/:id", deleteSclass)
 
-// Subject
+// Section
 
 router.post('/SubjectCreate', subjectCreate);
 
