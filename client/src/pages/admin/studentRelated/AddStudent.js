@@ -103,7 +103,7 @@ const AddStudent = ({ situation }) => {
                                 className="registerInput"
                                 value={className}
                                 onChange={changeHandler} required>
-                                <option value='Select Topic'>Select Class</option>
+                                <option value='Select Topic'>Select Topic</option>
                                 {sclassesList.map((classItem, index) => (
                                     <option key={index} value={classItem.sclassName}>
                                         {classItem.sclassName}
