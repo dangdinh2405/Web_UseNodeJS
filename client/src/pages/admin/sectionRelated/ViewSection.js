@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Tab, Container, Typography, BottomNavigation, BottomNavigationAction, Paper, IconButton } from '@mui/material';
 import { GreenButton } from '../../../components/buttonStyles';
+import { deleteUser } from '../../../redux/userRelated/userHandle';
 import TableTemplate from '../../../components/TableTemplate';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
@@ -12,17 +13,24 @@ import InsertChartIcon from '@mui/icons-material/InsertChart';
 import InsertChartOutlinedIcon from '@mui/icons-material/InsertChartOutlined';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import Popup from '../../../components/Popup';
+import { getAllStudents } from '../../../redux/studentRelated/studentHandle';
 
 const ViewSubject = () => {
   const navigate = useNavigate()
   const params = useParams()
   const dispatch = useDispatch();
   const { subloading, subjectDetails, sclassStudents, getresponse, error } = useSelector((state) => state.sclass);
+  const { currentUser } = useSelector(state => state.user)
 
   const { topicID, sectionID } = params
 
   const [showPopup, setShowPopup] = React.useState(false);
   const [message, setMessage] = React.useState("");
+
+  useEffect(() => {
+    dispatch(getAllStudents(currentUser._id));
+  }, [currentUser._id, dispatch]);
+
 
   useEffect(() => {
     dispatch(getSubjectDetails(sectionID, "Subject"));
@@ -60,13 +68,13 @@ const ViewSubject = () => {
   const deleteHandler = (deleteID, address) => {
     console.log(deleteID);
     console.log(address);
-    setMessage("Sorry the delete function has been disabled for now.")
+    setMessage("Delete successfully")
     setShowPopup(true)
 
-    // dispatch(deleteUser(deleteID, address))
-    //     .then(() => {
-    //         dispatch(getAllStudents(currentUser._id));
-    //     })
+    dispatch(deleteUser(deleteID, address))
+        .then(() => {
+            dispatch(getAllStudents(currentUser._id));
+        })
   }
 
   const StudentsAttendanceButtonHaver = ({ row }) => {
