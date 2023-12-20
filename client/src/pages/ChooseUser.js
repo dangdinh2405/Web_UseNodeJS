@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Grid,
-  Paper,
   Box,
   Container,
   CircularProgress,
@@ -12,7 +11,7 @@ import { AccountCircle, School, Group} from '@mui/icons-material';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import Popup from '../components/Popup';
-
+import Students from "../assets/img_choose.png";
 const ChooseUser = () => {
   const navigate = useNavigate()
 
@@ -57,7 +56,7 @@ const ChooseUser = () => {
   return (
     <StyledContainer>
       <Container>
-        <Grid container spacing={2} justifyContent="center" alignItems="center">
+        <Grid container spacing={2} justifyContent="center" alignItems="center" >
           <Grid item xs={12} sm={6} md={4}>
             <div onClick={() => navigateHandler("Admin")}>
               <StyledPaper elevation={3}>
@@ -111,19 +110,21 @@ const ChooseUser = () => {
 export default ChooseUser;
 
 const StyledContainer = styled.div`
-  background: linear-gradient(to bottom, #8AD3B8, #3C947B);
-  height: 120vh;
-  display: flex;
-  justify-content: center;
-  padding: 2rem;
+background-image: url(${Students});
+background-size: cover;
+background-position: center;
+height: 100vh;
+padding: 4rem;
 `;
 
-const StyledPaper = styled(Paper)`
+const StyledPaper = styled.div`
   padding: 20px;
   text-align: center;
-  background-color: #1f1f38;
+  background-color: #8AD3B8;
   color:rgba(255, 255, 255, 0.6);
-  cursor:pointer;
+  width: 300px;
+  height: 100px;
+  border-radius: 30px;
 
   &:hover {
     background-color: #3C947B;
