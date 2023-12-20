@@ -28,4 +28,4 @@ const sectionSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-module.exports = mongoose.model("section", sectionSchema);
+module.exports = mongoose.model("subject", sectionSchema);

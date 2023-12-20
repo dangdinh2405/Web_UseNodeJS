@@ -11,5 +11,5 @@ const stopicSchema = new mongoose.Schema({
     },
 }, { timestamps: true });
 
-module.exports = mongoose.model("stopic", stopicSchema);
+module.exports = mongoose.model("sclass", stopicSchema);
 
