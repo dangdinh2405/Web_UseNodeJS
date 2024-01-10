@@ -119,3 +119,21 @@ export const addStuff = (fields, address) => async (dispatch) => {
         dispatch(authError(error));
     }
 };
+
+export const addTopic = (fields, address) => async (dispatch) => {
+    dispatch(authRequest());
+
+    try {
+        const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/TopicCreate`, fields, {
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (result.data.message) {
+            dispatch(authFailed(result.data.message));
+        } else {
+            dispatch(stuffAdded(result.data));
+        }
+    } catch (error) {
+        dispatch(authError(error));
+    }
+};

@@ -27,6 +27,21 @@ export const getAllSclasses = (id, address) => async (dispatch) => {
     }
 }
 
+export const getAllStopics = (id, address) => async (dispatch) => {
+    dispatch(getRequest());
+
+    try {
+        const result = await axios.get(`${process.env.REACT_APP_BASE_URL}/TopicList/${id}`);
+        if (result.data.message) {
+            dispatch(getFailedTwo(result.data.message));
+        } else {
+            dispatch(getSuccess(result.data));
+        }
+    } catch (error) {
+        dispatch(getError(error));
+    }
+}
+
 export const getClassStudents = (id) => async (dispatch) => {
     dispatch(getRequest());
 

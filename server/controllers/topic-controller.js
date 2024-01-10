@@ -3,7 +3,7 @@ const Student = require('../models/studentSchema.js');
 const Subject = require('../models/sectionSchema.js');
 const Teacher = require('../models/teacherSchema.js');
 
-const sclassCreate = async (req, res) => {
+const stopicCreate = async (req, res) => {
     try {
         const sclass = new Sclass({
             sclassName: req.body.sclassName,
@@ -21,6 +21,19 @@ const sclassCreate = async (req, res) => {
         else {
             const result = await sclass.save();
             res.send(result);
+        }
+    } catch (err) {
+        res.status(500).json(err);
+    }
+};
+
+const sTopicList = async (req, res) => {
+    try {
+        let sclasses = await Sclass.find({ school: req.params.id })
+        if (sclasses.length > 0) {
+            res.send(sclasses)
+        } else {
+            res.send({ message: "No stopics found" });
         }
     } catch (err) {
         res.status(500).json(err);
@@ -102,4 +115,4 @@ const deleteSclasses = async (req, res) => {
 }
 
 
-module.exports = { sclassCreate, sclassList, deleteSclass, deleteSclasses, getSclassDetail, getSclassStudents };
+module.exports = { stopicCreate, sTopicList, deleteSclass, deleteSclasses, getSclassDetail, getSclassStudents };

@@ -4,7 +4,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { deleteUser } from '../../../redux/userRelated/userHandle';
-import { getAllSclasses } from '../../../redux/stopicRelated/stopicHandle';
+import { getAllSclasses, getAllStopics } from '../../../redux/stopicRelated/stopicHandle';
 import { BlueButton, GreenButton } from '../../../components/buttonStyles';
 import TableTemplate from '../../../components/TableTemplate';
 
@@ -26,7 +26,7 @@ const ShowClasses = () => {
   const adminID = currentUser._id
 
   useEffect(() => {
-    dispatch(getAllSclasses(adminID, "Sclass"));
+    dispatch(getAllStopics(adminID, "Sclass"));
   }, [adminID, dispatch]);
 
   if (error) {
